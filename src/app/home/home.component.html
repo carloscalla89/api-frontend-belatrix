@@ -1,0 +1,83 @@
+<div class="jumbotron text-center">
+  <h1>Money Exchange IO!</h1>
+  <div class="container" role="toolbar">
+      <div class="btn btn-lg btn-primary btn-group">Exchange!</div>
+      <div class="btn btn-lg btn-success btn-group">Exchange!</div>
+      <div class="btn btn-lg btn-info btn-group">Exchange!</div>
+      <div class="btn btn-lg btn-danger btn-group">Exchange!</div>
+    </div>
+</div>
+<div class="container-fluid">
+      <div class="row">
+          <h2 class="text-center text-lg text-uppercase"><strong>Currency Exchange</strong></h2>        
+        <div class="col-lg-4"></div>
+        <div class="form-group text-center col-lg-2">
+          <input [(ngModel)]="amount" type="number" min="0" step="0.0001" class="form-control" placeholder="USD">          
+        </div>
+        <div class="form-group text-center col-lg-2">
+          <input type="text" class="form-control" value="{{change | currency: 'EUR' : true : '1.0-4' }}" placeholder="EUR" [disabled]="isdisabled">
+        </div>
+        <div class="col-lg-4"></div>
+      </div>
+      <div class="row">
+        <div class="form-group text-center col-lg-12">
+          <button class="btn btn-lg btn-success" (click)="calculateExchange()">CALCULATE</button>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 mb-6 mb-md-0 text-center">
+          <h2 class="text-lg text-uppercase"> <strong>HISTORIC PRICE</strong></h2>
+        </div>
+      </div>
+        <div class="row">
+            <div class="col-md-6 mb-6 mb-md-0 text-center" *ngFor="let key of arrayCountries">
+              <div class="">
+                {{key}} - {{exchanges.rates[key] | number}}      
+              </div>
+            </div>   
+          </div>
+      </div>
+      
+</div>
+
+<footer class="clearfix">
+    <div id="footer-widgets">
+
+      <div class="container">
+
+      <div id="footer-wrapper">
+
+        <div class="row">
+          <div class="col-sm-6 col-md-3">
+            Lorem ipsum.<br>
+            Lorem ipsum, dolor sit amet.
+          </div> 
+
+          <div class="col-sm-6 col-md-3">
+            Lorem ipsum.<br>
+            Lorem ipsum, dolor sit amet.
+          </div>
+
+          <div class="col-sm-6 col-md-3">
+            Lorem ipsum.<br>
+            Lorem ipsum, dolor sit amet.
+          </div>
+
+          <div class="col-sm-6 col-md-3">
+              Lorem ipsum, dolor sit amet.
+              <br/>
+              <a href="https://www.facebook.com/bootsnipp"><i class="fa fa-facebook-square fa-3x social"></i></a>
+	            <a href="https://twitter.com/bootsnipp"><i class="fa fa-twitter-square fa-3x social"></i></a>
+	            <a href="https://plus.google.com/+Bootsnipp-page"><i class="fa fa-google-plus-square fa-3x social"></i></a>
+	            <a href="mailto:bootsnipp@gmail.com"><i class="fa fa-envelope-square fa-3x social"></i></a>
+          </div> <!-- end widget1 -->
+
+        </div> <!-- end .row -->
+
+      </div> <!-- end #footer-wrapper -->
+
+      </div> <!-- end .container -->
+    </div> <!-- end #footer-widgets -->
+
+</footer> <!-- end footer -->
