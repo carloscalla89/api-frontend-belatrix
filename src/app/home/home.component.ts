@@ -35,6 +35,8 @@ import { error } from 'util';
   templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
+
+  is_edit : boolean;
   /**
    * Set our default values
    */
@@ -52,12 +54,14 @@ export class HomeComponent implements OnInit {
     public appState: AppState,
     public title: Title,
     private _exchangeService: ExchangeService
-  ) {}
+  ) {
+    this.is_edit = true;
+  }
 
   public ngOnInit() {
 
     TimerObservable.create(0, 600000).subscribe( () => {
-      this._exchangeService.getExchange('USD').subscribe( (data) => {
+      this._exchangeService.getExchange('USD', 'EUR',this.amount).subscribe( (data) => {
         this.exchanges = data;
         this.arrayCountries = [];
         Object.keys(this.exchanges.rates).forEach((key) => this.arrayCountries.push(key));
@@ -69,9 +73,9 @@ export class HomeComponent implements OnInit {
 
   public calculateExchange(): void {
     if (!(this.amount >= 0)) { return; }
-    this._exchangeService.getExchange('USD', 'EUR').subscribe((data) => {
+    this._exchangeService.getExchange('USD', 'EUR',this.amount).subscribe((data) => {
       this.exchange = data;
-      this.change = this.amount * this.exchange.rates['EUR'];
+      this.change = this.exchange.changedAmount;
     }, (error) => {
       console.log('error ' + error);
     });
