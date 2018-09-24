@@ -9,8 +9,6 @@ export class ExchangeService {
 
     private headers = new Headers({ 'Content-Type': 'application/json' });
     private _exchangeApi = 'http://localhost:8080/money-exchange/exchangeRate';
-    private exchageUSDtoANY = 'http://api.fixer.io/latest?base=USD';
-    private exchageUSDtoEUR = 'http://api.fixer.io/latest?base=USD&symbols=EUR';
 
     constructor(private httpClient: HttpClient) { }
 
